@@ -1,22 +1,19 @@
-define([
-    'ui/utils',
-    'core/extend',
-    'ui/widget'], function (
-        Ui,
-        extend,
-        Widget) {
-    function MenuElement() {
-        Widget.call(this);
-        var self = this;
+import Ui from 'ui/utils';
+import Widget from 'ui/widget';
+
+class MenuElement extends Widget {
+    constructor() {
+        super();
+        const self = this;
 
         this.opaque = true;
 
-        var subMenu = null;
+        let subMenu = null;
         Object.defineProperty(this, 'subMenu', {
-            get: function () {
+            get: function() {
                 return subMenu;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (subMenu !== aValue) {
                     subMenu = aValue;
                     if (subMenu) {
@@ -27,18 +24,18 @@ define([
                 }
             }
         });
-        Ui.on(this.element, Ui.Events.MOUSEOVER, function (evt) {
+        Ui.on(this.element, Ui.Events.MOUSEOVER, evt => {
             if (Ui.isMenuSession()) {
-                self.parent.forEach(function (item) {
-                    if(item.subMenu)
+                self.parent.forEach(item => {
+                    if (item.subMenu)
                         item.subMenu.close();
                 });
                 if (subMenu) {
-                    subMenu.showRelativeTo(self.element, self.parent.element.className.indexOf('menu-bar') === -1);
+                    subMenu.showRelativeTo(self.element, !self.parent.element.className.includes('menu-bar'));
                 }
             }
         });
     }
-    extend(MenuElement, Widget);
-    return MenuElement;
-});
+}
+
+export default MenuElement;

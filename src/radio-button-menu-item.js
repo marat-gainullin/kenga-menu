@@ -1,19 +1,17 @@
-define([
-    'core/extend',
-    './boolean-menu-item'], function (
-        extend,
-        BooleanMenuItem) {
-    function RadioMenuItem(text, selected, onActionPerformed) {
+import BooleanMenuItem from './boolean-menu-item';
+
+class RadioMenuItem extends BooleanMenuItem {
+    constructor(text, selected, onActionPerformed) {
         if (arguments.length < 2)
             selected = false;
         if (arguments.length < 1)
             text = '';
-        var radio = document.createElement('input');
+        const radio = document.createElement('input');
         radio.type = 'radio';
 
-        BooleanMenuItem.call(this, radio, text, selected, onActionPerformed);
-        var self = this;
+        super(radio, text, selected, onActionPerformed);
+        const self = this;
     }
-    extend(RadioMenuItem, BooleanMenuItem);
-    return RadioMenuItem;
-});
+}
+
+export default RadioMenuItem;

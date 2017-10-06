@@ -1,64 +1,58 @@
-define([
-    'ui/utils',
-    'core/id',
-    'core/extend',
-    'ui/container'], function (
-        Ui,
-        Id,
-        extend,
-        Container) {
-    function MenuBar() {
-        Container.call(this);
-        var self = this;
+import Ui from 'ui/utils';
+import Id from 'core/id';
+import Container from 'ui/container';
+
+class MenuBar extends Container {
+    constructor() {
+        super();
+        const self = this;
 
         this.element.classList.add('p-menu-bar');
-        this.element.id = 'p-' + Id.generate();
+        this.element.id = `p-${Id.generate()}`;
 
-        var gapsStyle = document.createElement('style');
+        const gapsStyle = document.createElement('style');
         gapsStyle.innerHTML =
-                'div#' + self.element.id + ' > .p-widget {' +
-                'height: 100%;' +
-                'display: inline-block;' +
-                '}';
+            `div#${self.element.id} > .p-widget {height: 100%;display: inline-block;}`;
         this.element.appendChild(gapsStyle);
 
         function findWidgetByElement(anElement) {
-            var currentElement = anElement;
+            let currentElement = anElement;
             while (currentElement !== null && !('p-widget' in currentElement) && currentElement !== document.body)
                 currentElement = currentElement.parentElement;
             return currentElement !== document.body && currentElement !== null ? currentElement['p-widget'] : null;
         }
 
-        function startItem(target){
-            var item = findWidgetByElement(target);
+        function startItem(target) {
+            const item = findWidgetByElement(target);
             if (item && item.subMenu) {
                 Ui.startMenuSession(self);
                 item.subMenu.showRelativeTo(item.element, false);
-            }            
+            }
         }
 
-        Ui.on(this.element, Ui.Events.MOUSEDOWN, function (evt) {
+        Ui.on(this.element, Ui.Events.MOUSEDOWN, evt => {
             evt.stopPropagation();
             startItem(evt.target);
         }, true);
-        Ui.on(this.element, Ui.Events.CLICK, function (evt) {
+        Ui.on(this.element, Ui.Events.CLICK, evt => {
             evt.stopPropagation();
             startItem(evt.target);
         }, true);
+
         function close() {
             if (self.element.parentElement) {
-                self.forEach(function (item) {
+                self.forEach(item => {
                     if (item.subMenu)
                         item.subMenu.close();
                 });
             }
         }
         Object.defineProperty(this, 'close', {
-            get: function () {
+            get: function() {
                 return close;
             }
         });
     }
-    extend(MenuBar, Container);
-    return MenuBar;
-});
+}
+
+export default MenuBar;

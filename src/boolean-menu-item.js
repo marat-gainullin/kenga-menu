@@ -1,35 +1,30 @@
-define([
-    'core/invoke',
-    'ui/utils',
-    'core/extend',
-    './menu-element',
-    'ui/events/value-change-event'], function (
-        Invoke,
-        Ui,
-        extend,
-        MenuElement,
-        ValueChangeEvent) {
-    function BooleanMenuItem(radio, text, selected, onActionPerformed) {
+import Invoke from 'core/invoke';
+import Ui from 'ui/utils';
+import MenuElement from './menu-element';
+import ValueChangeEvent from 'ui/events/value-change-event';
+
+class BooleanMenuItem extends MenuElement {
+    constructor(radio, text, selected, onActionPerformed) {
         if (arguments.length < 3)
             selected = false;
         if (arguments.length < 2)
             text = '';
-        var iconTextGap = 4;
+        let iconTextGap = 4;
 
-        MenuElement.call(this);
-        var self = this;
+        super();
+        const self = this;
 
         this.onActionPerformed = onActionPerformed;
 
-        var clickReg = Ui.on(this.element, Ui.Events.CLICK, function () {
+        const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
             self.fireActionPerformed();
             self.selected = !self.selected;
             // Ui.closeMenuSession();
         });
 
-        var horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
+        let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
 
-        var paragraph = document.createElement('p');
+        const paragraph = document.createElement('p');
         paragraph.classList.add('p-paragraph');
         this.element.appendChild(paragraph);
 
@@ -52,13 +47,13 @@ define([
                 if (radio) {
                     self.element.insertBefore(paragraph, radio);
                     if (iconTextGap > 0 && text)
-                        radio.style.marginLeft = iconTextGap + 'px';
+                        radio.style.marginLeft = `${iconTextGap}px`;
                 }
             } else if (horizontalTextPosition === Ui.HorizontalPosition.RIGHT) {
                 if (radio) {
                     self.element.insertBefore(radio, paragraph);
                     if (iconTextGap > 0 && text)
-                        radio.style.marginRight = iconTextGap + 'px';
+                        radio.style.marginRight = `${iconTextGap}px`;
                 }
             } // else // value of 'horizontalTextPosition' is unknown
         }
@@ -71,22 +66,22 @@ define([
         applyPosition();
         applyText();
 
-        Object.defineProperty(this, "text", {
-            get: function () {
+        Object.defineProperty(this, 'text', {
+            get: function() {
                 return text;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (text !== aValue) {
                     text = aValue;
                     applyText();
                 }
             }
         });
-        Object.defineProperty(this, "iconTextGap", {
-            get: function () {
+        Object.defineProperty(this, 'iconTextGap', {
+            get: function() {
                 return iconTextGap;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (iconTextGap !== aValue) {
                     iconTextGap = aValue;
                     applyPosition();
@@ -96,11 +91,11 @@ define([
         /**
          * Horizontal position of the text relative to the icon.
          */
-        Object.defineProperty(this, "horizontalTextPosition", {
-            get: function () {
+        Object.defineProperty(this, 'horizontalTextPosition', {
+            get: function() {
                 return horizontalTextPosition;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (horizontalTextPosition !== aValue) {
                     horizontalTextPosition = aValue;
                     applyPosition();
@@ -108,12 +103,12 @@ define([
             }
         });
         Object.defineProperty(this, 'selected', {
-            get: function () {
+            get: function() {
                 return selected;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (selected !== aValue) {
-                    var oldValue = selected;
+                    const oldValue = selected;
                     selected = aValue;
                     aplySelected();
                     fireValueChanged(oldValue);
@@ -122,18 +117,19 @@ define([
         });
 
         Object.defineProperty(this, 'value', {
-            get: function () {
+            get: function() {
                 return self.selected;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 self.selected = aValue;
             }
         });
-        var valueChangeHandlers = new Set();
+        const valueChangeHandlers = new Set();
+
         function addValueChangeHandler(handler) {
             valueChangeHandlers.add(handler);
             return {
-                removeHandler: function () {
+                removeHandler: function() {
                     valueChangeHandlers.delete(handler);
                 }
 
@@ -141,28 +137,28 @@ define([
         }
 
         Object.defineProperty(this, 'addValueChangeHandler', {
-            get: function () {
+            get: function() {
                 return addValueChangeHandler;
             }
         });
 
         function fireValueChanged(oldValue) {
-            var event = new ValueChangeEvent(self, oldValue, selected);
-            valueChangeHandlers.forEach(function (h) {
-                Invoke.later(function () {
+            const event = new ValueChangeEvent(self, oldValue, selected);
+            valueChangeHandlers.forEach(h => {
+                Invoke.later(() => {
                     h(event);
                 });
             });
         }
 
-        var buttonGroup = null;
+        let buttonGroup = null;
 
         Object.defineProperty(this, 'buttonGroup', {
-            get: function () {
+            get: function() {
                 return buttonGroup;
             },
-            set: function (aValue) {
-                var oldGroup = buttonGroup;
+            set: function(aValue) {
+                const oldGroup = buttonGroup;
                 buttonGroup = aValue;
                 if (oldGroup)
                     oldGroup.remove(self);
@@ -171,6 +167,6 @@ define([
             }
         });
     }
-    extend(BooleanMenuItem, MenuElement);
-    return BooleanMenuItem;
-});
+}
+
+export default BooleanMenuItem;
