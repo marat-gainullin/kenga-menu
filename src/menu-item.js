@@ -2,7 +2,7 @@ import Ui from 'ui/utils';
 import MenuElement from './menu-element';
 
 class MenuItem extends MenuElement {
-    constructor(text, image, onActionPerformed) {
+    constructor(text, image, onAction) {
         if (arguments.length < 2)
             image = null;
         if (arguments.length < 1)
@@ -13,11 +13,11 @@ class MenuItem extends MenuElement {
         const self = this;
 
         const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
-            self.fireActionPerformed();
+            self.fireAction();
             Ui.closeMenuSession();
         });
 
-        this.onActionPerformed = onActionPerformed;
+        this.onAction = onAction;
 
         let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
 

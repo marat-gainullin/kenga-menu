@@ -4,7 +4,7 @@ import MenuElement from './menu-element';
 import ValueChangeEvent from 'ui/events/value-change-event';
 
 class BooleanMenuItem extends MenuElement {
-    constructor(radio, text, selected, onActionPerformed) {
+    constructor(radio, text, selected, onAction) {
         if (arguments.length < 3)
             selected = false;
         if (arguments.length < 2)
@@ -14,10 +14,10 @@ class BooleanMenuItem extends MenuElement {
         super();
         const self = this;
 
-        this.onActionPerformed = onActionPerformed;
+        this.onAction = onAction;
 
         const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
-            self.fireActionPerformed();
+            self.fireAction();
             self.selected = !self.selected;
             // Ui.closeMenuSession();
         });

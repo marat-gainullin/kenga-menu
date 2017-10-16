@@ -16,26 +16,26 @@ describe('Menu Api', function () {
         var menuItem1 = new MenuItem('txt', image, function () {});
         expect(menuItem1.text).toEqual('txt');
         expect(menuItem1.icon).toBe(image);
-        expect(menuItem1.onActionPerformed).toBeTruthy();
+        expect(menuItem1.onAction).toBeTruthy();
         expectHorizontalTextPosition(menuItem1, Ui);
         expectWidget(menuItem1, Font, Color, Cursor);
 
         var menuItem2 = new MenuItem('txt', image);
         expect(menuItem2.text).toEqual('txt');
         expect(menuItem2.icon).toBe(image);
-        expect(menuItem2.onActionPerformed).toBeFalsy();
+        expect(menuItem2.onAction).toBeFalsy();
         expectHorizontalTextPosition(menuItem2, Ui);
 
         var menuItem3 = new MenuItem('txt');
         expect(menuItem3.text).toEqual('txt');
         expect(menuItem3.icon).toBeNull();
-        expect(menuItem3.onActionPerformed).toBeFalsy();
+        expect(menuItem3.onAction).toBeFalsy();
         expectHorizontalTextPosition(menuItem3, Ui);
 
         var menuItem4 = new MenuItem();
         expect(menuItem4.text).toEqual('');
         expect(menuItem4.icon).toBeNull();
-        expect(menuItem4.onActionPerformed).toBeFalsy();
+        expect(menuItem4.onAction).toBeFalsy();
         expectHorizontalTextPosition(menuItem4, Ui);
 
         menuItem4.text = 'Sample label';
@@ -102,26 +102,26 @@ describe('Menu Api', function () {
         var menuItem1 = new MenuItem('txt', true, function () {});
         expect(menuItem1.text).toEqual('txt');
         expect(menuItem1.selected).toBe(true);
-        expect(menuItem1.onActionPerformed).toBeTruthy();
+        expect(menuItem1.onAction).toBeTruthy();
         expectHorizontalTextPosition(menuItem1, Ui);
         expectWidget(menuItem1, Font, Color, Cursor);
 
         var menuItem2 = new MenuItem('txt', true);
         expect(menuItem2.text).toEqual('txt');
         expect(menuItem2.selected).toBe(true);
-        expect(menuItem2.onActionPerformed).toBeFalsy();
+        expect(menuItem2.onAction).toBeFalsy();
         expectHorizontalTextPosition(menuItem2, Ui);
 
         var menuItem3 = new MenuItem('txt');
         expect(menuItem3.text).toEqual('txt');
         expect(menuItem3.selected).toBe(false);
-        expect(menuItem3.onActionPerformed).toBeFalsy();
+        expect(menuItem3.onAction).toBeFalsy();
         expectHorizontalTextPosition(menuItem3, Ui);
 
         var menuItem4 = new MenuItem();
         expect(menuItem4.text).toEqual('');
         expect(menuItem4.selected).toBe(false);
-        expect(menuItem4.onActionPerformed).toBeFalsy();
+        expect(menuItem4.onAction).toBeFalsy();
         expectHorizontalTextPosition(menuItem4, Ui);
 
         done();
@@ -131,7 +131,7 @@ describe('Menu Api', function () {
         document.body.appendChild(menuItem.element);
         menuItem.text = 'Are you beatyful?';
 
-        menuItem.onActionPerformed = function (evt) {
+        menuItem.onAction = function (evt) {
             Logger.info("Action performed on '" + evt.source.constructor.name + "'");
         };
         menuItem.onValueChange = function (evt) {
@@ -346,7 +346,7 @@ describe('Menu Api', function () {
             var button = new DropDownButton('Click my chevron');
             document.body.appendChild(button.element);
             
-            button.onActionPerformed = function (evt) {
+            button.onAction = function (evt) {
                 Logger.info("Action performed on '" + evt.source.constructor.name + "'");
             };
 
