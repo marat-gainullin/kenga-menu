@@ -1,5 +1,5 @@
-import Ui from 'ui/utils';
-import Widget from 'ui/widget';
+import Ui from 'kenga/utils';
+import Widget from 'kenga/widget';
 
 class MenuElement extends Widget {
     constructor() {

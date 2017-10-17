@@ -1,6 +1,6 @@
 {
   "name": "kenga-menu",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Kenga menu bar and popup menu widgets.",
   "main": "index.js",
   "repository": "https://github.com/marat-gainullin/kenga-menu.git",
@@ -35,9 +35,16 @@
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "kenga-buttons": "^0.0.5",
+    "kenga-containers": "^0.0.4",
+    "septima-remote": "^0.0.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0",
     "yargs": "^9.0.1"
+  },
+  "dependencies": {
+    "kenga": "^0.0.9",
+    "septima-utils": "^0.0.4"
   }
 }

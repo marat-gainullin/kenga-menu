@@ -1,3 +1,5 @@
+@import 'node_modules/kenga/layout.css';
+
 .p-menu-item > .p-paragraph,
 .p-menu-item > .p-image,
 .p-menu-item > input[type=check],

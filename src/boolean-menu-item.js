@@ -1,7 +1,7 @@
-import Invoke from 'core/invoke';
-import Ui from 'ui/utils';
+import Invoke from 'septima-utils/invoke';
+import Ui from 'kenga/utils';
 import MenuElement from './menu-element';
-import ValueChangeEvent from 'ui/events/value-change-event';
+import ValueChangeEvent from 'kenga/events/value-change-event';
 
 class BooleanMenuItem extends MenuElement {
     constructor(radio, text, selected, onAction) {
