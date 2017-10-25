@@ -53,7 +53,7 @@ class MenuItem extends MenuElement {
         applyPosition();
         applyText();
 
-        Object.defineProperty(this, "icon", {
+        Object.defineProperty(this, 'icon', {
             get: function() {
                 return image;
             },
@@ -72,7 +72,7 @@ class MenuItem extends MenuElement {
                 }
             }
         });
-        Object.defineProperty(this, "text", {
+        Object.defineProperty(this, 'text', {
             get: function() {
                 return text;
             },
@@ -83,7 +83,7 @@ class MenuItem extends MenuElement {
                 }
             }
         });
-        Object.defineProperty(this, "iconTextGap", {
+        Object.defineProperty(this, 'iconTextGap', {
             get: function() {
                 return iconTextGap;
             },
@@ -95,7 +95,7 @@ class MenuItem extends MenuElement {
         /**
          * Horizontal position of the text relative to the icon.
          */
-        Object.defineProperty(this, "horizontalTextPosition", {
+        Object.defineProperty(this, 'horizontalTextPosition', {
             get: function() {
                 return horizontalTextPosition;
             },
