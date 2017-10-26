@@ -1,10 +1,13 @@
 @import 'node_modules/kenga/layout.css';
 
 .p-menu-item > .p-paragraph,
-.p-menu-item > .p-image,
 .p-menu-item > input[type=check],
 .p-menu-item > input[type=radio] {
     display: inline;
+    vertical-align: middle;
+}
+.p-menu-item > .p-image{
+    display: inline-block;    
     vertical-align: middle;
 }
 
