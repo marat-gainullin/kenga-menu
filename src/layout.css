@@ -3,9 +3,11 @@
 .p-menu-item > .p-paragraph,
 .p-menu-item > input[type=check],
 .p-menu-item > input[type=radio] {
-    display: inline;
+    display: inline-block;
     vertical-align: middle;
+    margin: 0px;
 }
+
 .p-menu-item > .p-image{
     display: inline-block;    
     vertical-align: middle;
