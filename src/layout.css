@@ -1,15 +1,14 @@
 @import 'node_modules/kenga/layout.css';
 
-.p-menu-item > .p-paragraph,
-.p-menu-item > input[type=check],
-.p-menu-item > input[type=radio] {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0px;
+.p-menu-item {
+    white-space: nowrap;
 }
 
-.p-menu-item > .p-image{
-    display: inline-block;    
+.p-menu-item > .p-paragraph,
+.p-menu-item > .p-image,
+.p-menu-item > input[type="checkbox"],
+.p-menu-item > input[type="radio"] {
+    display: inline-block;
     vertical-align: middle;
 }
 
