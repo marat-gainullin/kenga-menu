@@ -13,8 +13,10 @@ class MenuItem extends MenuElement {
         const self = this;
 
         const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
-            self.fireAction();
-            Ui.closeMenuSession();
+            if (self.enabled) {
+                self.fireAction();
+                Ui.closeMenuSession();
+            }
         });
 
         this.onAction = onAction;
@@ -54,10 +56,10 @@ class MenuItem extends MenuElement {
         applyText();
 
         Object.defineProperty(this, 'icon', {
-            get: function() {
+            get: function () {
                 return image;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (image !== aValue) {
                     if (image) {
                         image.classList.remove('p-image');
@@ -73,10 +75,10 @@ class MenuItem extends MenuElement {
             }
         });
         Object.defineProperty(this, 'text', {
-            get: function() {
+            get: function () {
                 return text;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (text !== aValue) {
                     text = aValue;
                     applyText();
@@ -84,10 +86,10 @@ class MenuItem extends MenuElement {
             }
         });
         Object.defineProperty(this, 'iconTextGap', {
-            get: function() {
+            get: function () {
                 return iconTextGap;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 iconTextGap = aValue;
                 applyPosition();
             }
@@ -96,10 +98,10 @@ class MenuItem extends MenuElement {
          * Horizontal position of the text relative to the icon.
          */
         Object.defineProperty(this, 'horizontalTextPosition', {
-            get: function() {
+            get: function () {
                 return horizontalTextPosition;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (horizontalTextPosition !== aValue) {
                     horizontalTextPosition = aValue;
                     applyPosition();
