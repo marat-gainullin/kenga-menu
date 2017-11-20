@@ -39,6 +39,16 @@ class Menu extends Container {
             }
         });
 
+        function popupRelativeTo(anElement, horizontal = true) {
+            Ui.startMenuSession(self);
+            showRelativeTo(anElement, horizontal);
+        }
+        Object.defineProperty(this, 'popupRelativeTo', {
+            get: function() {
+                return popupRelativeTo;
+            }
+        });
+        
         function showAt(left, top) {
             if (self.element.parentElement)
                 throw 'Menu is already shown';
@@ -51,6 +61,16 @@ class Menu extends Container {
         Object.defineProperty(this, 'showAt', {
             get: function() {
                 return showAt;
+            }
+        });
+
+        function popupAt(left, top){
+            Ui.startMenuSession(self);
+            showAt(left, top);
+        }
+        Object.defineProperty(this, 'popupAt', {
+            get: function() {
+                return popupAt;
             }
         });
 
