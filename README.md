@@ -1,4 +1,4 @@
-# kenga-menu
+# Kenga menu
 Kenga menu bar and popup menu widgets.
 
 ## Install
