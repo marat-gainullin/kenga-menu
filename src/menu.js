@@ -12,29 +12,40 @@ class Menu extends Container {
 
         const gapsStyle = document.createElement('style');
         gapsStyle.innerHTML =
-            `div#${self.element.id} > .p-widget {display: block;}`;
+                `div#${self.element.id} > .p-widget {display: block;}`;
         this.element.appendChild(gapsStyle);
 
         function showRelativeTo(anElement, horizontal = true) {
             if (!self.element.parentElement) {
-                self.element.classList.remove('p-menu-horizontal-rel');
-                self.element.classList.remove('p-menu-vertical-rel');
-                const top = Ui.absoluteTop(anElement);
-                const left = Ui.absoluteLeft(anElement);
+                const targetTop = Ui.absoluteTop(anElement);
+                const targetLeft = Ui.absoluteLeft(anElement);
                 if (horizontal) {
-                    self.element.style.top = `${top}px`;
-                    self.element.style.left = `${left + anElement.offsetWidth}px`;
+                    self.element.classList.remove('p-menu-vertical-rel');
                     self.element.classList.add('p-menu-horizontal-rel');
-                } else {
-                    self.element.style.top = `${top + anElement.offsetHeight}px`;
+                    const top = targetTop;
+                    const left = targetLeft + anElement.offsetWidth;
+                    self.element.style.top = `${top}px`;
                     self.element.style.left = `${left}px`;
+                    document.body.appendChild(self.element);
+                    if (left + self.element.offsetWidth > window.innerWidth) {
+                        self.element.style.left = `${targetLeft - self.element.offsetWidth}px`;
+                    }
+                    if (top + self.element.offsetHeight > window.innerHeight) {
+                        self.element.style.top = `${targetTop + anElement.offsetHeight - self.element.offsetHeight}px`;
+                    }
+                } else {
+                    self.element.classList.remove('p-menu-horizontal-rel');
                     self.element.classList.add('p-menu-vertical-rel');
+                    const top = targetTop + anElement.offsetHeight;
+                    const left = targetLeft;
+                    self.element.style.top = `${top}px`;
+                    self.element.style.left = `${left}px`;
+                    document.body.appendChild(self.element);
                 }
-                document.body.appendChild(self.element);
-            }
+        }
         }
         Object.defineProperty(this, 'showRelativeTo', {
-            get: function() {
+            get: function () {
                 return showRelativeTo;
             }
         });
@@ -44,11 +55,11 @@ class Menu extends Container {
             showRelativeTo(anElement, horizontal);
         }
         Object.defineProperty(this, 'popupRelativeTo', {
-            get: function() {
+            get: function () {
                 return popupRelativeTo;
             }
         });
-        
+
         function showAt(left, top) {
             if (self.element.parentElement)
                 throw 'Menu is already shown';
@@ -57,19 +68,25 @@ class Menu extends Container {
             self.element.style.top = `${top}px`;
             self.element.style.left = `${left}px`;
             document.body.appendChild(self.element);
+            if (left + self.element.offsetWidth > window.innerWidth) {
+                self.element.style.left = `${left - self.element.offsetWidth}px`;
+            }
+            if (top + self.element.offsetHeight > window.innerHeight) {
+                self.element.style.top = `${top - self.element.offsetHeight}px`;
+            }
         }
         Object.defineProperty(this, 'showAt', {
-            get: function() {
+            get: function () {
                 return showAt;
             }
         });
 
-        function popupAt(left, top){
+        function popupAt(left, top) {
             Ui.startMenuSession(self);
             showAt(left, top);
         }
         Object.defineProperty(this, 'popupAt', {
-            get: function() {
+            get: function () {
                 return popupAt;
             }
         });
@@ -84,7 +101,7 @@ class Menu extends Container {
             }
         }
         Object.defineProperty(this, 'close', {
-            get: function() {
+            get: function () {
                 return close;
             }
         });
