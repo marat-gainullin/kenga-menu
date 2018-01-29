@@ -8,7 +8,7 @@ class MenuBar extends Container {
         const self = this;
 
         this.element.classList.add('p-menu-bar');
-        this.element.id = `p-${Id.generate()}`;
+        this.element.id = `p-${Id.next()}`;
 
         const gapsStyle = document.createElement('style');
         gapsStyle.innerHTML =
