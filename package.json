@@ -1,6 +1,6 @@
 {
   "name": "kenga-menu",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Kenga menu bar and popup menu widgets.",
   "main": "index.js",
   "repository": "https://github.com/marat-gainullin/kenga-menu.git",
