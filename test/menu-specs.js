@@ -185,7 +185,7 @@ describe('Menu Api', () => {
 
         menuItem4.text = 'Sample label';
         expect(menuItem4.iconTextGap).toEqual(4);
-        return Resource.Icon.load('base/assets/binary-content.png')
+        return Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     menuItem4.icon = loaded;
                 })
@@ -203,7 +203,7 @@ describe('Menu Api', () => {
         document.body.appendChild(menuItem.element);
         menuItem.text = 'Sample menu item';
         expect(menuItem.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     menuItem.icon = loaded;
                     // defaults
