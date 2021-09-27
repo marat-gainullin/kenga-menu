@@ -1,4 +1,3 @@
-import Id from 'septima-utils/id';
 import Ui from 'kenga/utils';
 import Container from 'kenga/container';
 
@@ -8,7 +7,7 @@ class MenuBar extends Container {
         const self = this;
 
         this.element.classList.add('p-menu-bar');
-        this.element.id = `p-${Id.next()}`;
+        this.element.id = `p-${Ui.next()}`;
 
         const gapsStyle = document.createElement('style');
         gapsStyle.innerHTML =

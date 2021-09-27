@@ -1,4 +1,3 @@
-import Invoke from 'septima-utils/invoke';
 import Ui from 'kenga/utils';
 import MenuElement from './menu-element';
 import ValueChangeEvent from 'kenga/events/value-change-event';
@@ -145,7 +144,7 @@ class BooleanMenuItem extends MenuElement {
         function fireValueChanged(oldValue) {
             const event = new ValueChangeEvent(self, oldValue, selected);
             valueChangeHandlers.forEach(h => {
-                Invoke.later(() => {
+                Ui.later(() => {
                     h(event);
                 });
             });

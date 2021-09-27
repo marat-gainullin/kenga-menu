@@ -1,4 +1,3 @@
-import Id from 'septima-utils/id';
 import Ui from 'kenga/utils';
 import Container from 'kenga/container';
 
@@ -8,7 +7,7 @@ class Menu extends Container {
         const self = this;
 
         this.element.classList.add('p-menu');
-        this.element.id = `p-${Id.next()}`;
+        this.element.id = `p-${Ui.next()}`;
 
         const gapsStyle = document.createElement('style');
         gapsStyle.innerHTML =
@@ -22,16 +21,16 @@ class Menu extends Container {
                 if (horizontal) {
                     self.element.classList.remove('p-menu-vertical-rel');
                     self.element.classList.add('p-menu-horizontal-rel');
-                    const top = targetTop;
-                    const left = targetLeft + anElement.offsetWidth;
+                    const top = targetTop + anElement.offsetHeight;
+                    const left = targetLeft;
                     self.element.style.top = `${top}px`;
                     self.element.style.left = `${left}px`;
                     document.body.appendChild(self.element);
                     if (left + self.element.offsetWidth > window.innerWidth) {
-                        self.element.style.left = `${targetLeft - self.element.offsetWidth}px`;
+                        self.element.style.left = `${targetLeft + anElement.offsetWidth - self.element.offsetWidth}px`;
                     }
                     if (top + self.element.offsetHeight > window.innerHeight) {
-                        self.element.style.top = `${targetTop + anElement.offsetHeight - self.element.offsetHeight}px`;
+                        self.element.style.top = `${targetTop - self.element.offsetHeight}px`;
                     }
                 } else {
                     self.element.classList.remove('p-menu-horizontal-rel');
@@ -42,7 +41,7 @@ class Menu extends Container {
                     self.element.style.left = `${left}px`;
                     document.body.appendChild(self.element);
                 }
-        }
+            }
         }
         Object.defineProperty(this, 'showRelativeTo', {
             get: function () {
