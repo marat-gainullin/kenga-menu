@@ -19,6 +19,20 @@ class Menu extends Container {
                 const targetTop = Ui.absoluteTop(anElement);
                 const targetLeft = Ui.absoluteLeft(anElement);
                 if (horizontal) {
+                    self.element.classList.remove('p-menu-horizontal-rel');
+                    self.element.classList.add('p-menu-vertical-rel');
+                    const top = targetTop;
+                    const left = targetLeft + anElement.offsetWidth;
+                    self.element.style.top = `${top}px`;
+                    self.element.style.left = `${left}px`;
+                    document.body.appendChild(self.element);
+                    if (left + self.element.offsetWidth > window.innerWidth) {
+                        self.element.style.left = `${targetLeft - self.element.offsetWidth}px`;
+                    }
+                    if (top + self.element.offsetHeight > window.innerHeight) {
+                        self.element.style.top = `${targetTop + anElement.offsetHeight - self.element.offsetHeight}px`;
+                    }
+                } else {
                     self.element.classList.remove('p-menu-vertical-rel');
                     self.element.classList.add('p-menu-horizontal-rel');
                     const top = targetTop + anElement.offsetHeight;
@@ -32,14 +46,6 @@ class Menu extends Container {
                     if (top + self.element.offsetHeight > window.innerHeight) {
                         self.element.style.top = `${targetTop - self.element.offsetHeight}px`;
                     }
-                } else {
-                    self.element.classList.remove('p-menu-horizontal-rel');
-                    self.element.classList.add('p-menu-vertical-rel');
-                    const top = targetTop + anElement.offsetHeight;
-                    const left = targetLeft;
-                    self.element.style.top = `${top}px`;
-                    self.element.style.left = `${left}px`;
-                    document.body.appendChild(self.element);
                 }
             }
         }
