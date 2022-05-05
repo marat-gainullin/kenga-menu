@@ -11,7 +11,12 @@ class Menu extends Container {
 
         const gapsStyle = document.createElement('style');
         gapsStyle.innerHTML =
-                `div#${self.element.id} > .p-widget {display: block;}`;
+                `
+                div#${self.element.id} > .p-widget {display: block;}
+                div#${self.element.id} > .p-tabs {display: flex;}
+                div#${self.element.id} > .p-holy-grail-column {display: flex;}
+                div#${self.element.id} > .p-box-vertical {display: flex;}
+                `;
         this.element.appendChild(gapsStyle);
 
         function showRelativeTo(anElement, horizontal = true) {
