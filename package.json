@@ -30,6 +30,6 @@
     "shelljs": "^0.8.4",
     "septima-model": "0.0.25",
     "kenga-buttons": "^0.0.33",
-    "kenga-containers": "^0.0.44"
+    "kenga-containers": "^0.0.45"
   }
 }
