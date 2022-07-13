@@ -17,7 +17,11 @@ class MenuItem extends MenuElement {
 
         super();
         const self = this;
-        image = typeof image === 'string' ? iconByString(image) : image;
+
+        if (typeof image === 'string') {
+          image = iconByString(image)
+          image.classList.add('p-image');
+        }
 
         const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
             if (self.enabled) {
