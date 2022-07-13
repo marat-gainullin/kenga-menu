@@ -55,6 +55,12 @@ class MenuItem extends MenuElement {
         applyPosition();
         applyText();
 
+        function iconByString(aValue) {
+            const img = document.createElement('img');
+            img.src = aValue;
+            return img;
+        }
+
         Object.defineProperty(this, 'icon', {
             get: function () {
                 return image;
@@ -65,7 +71,7 @@ class MenuItem extends MenuElement {
                         image.classList.remove('p-image');
                         self.element.removeChild(image);
                     }
-                    image = aValue;
+                    image = typeof aValue === 'string' ? iconByString(aValue) : aValue;
                     if (image) {
                         self.element.appendChild(image);
                         image.classList.add('p-image');
