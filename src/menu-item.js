@@ -1,6 +1,12 @@
 import Ui from 'kenga/utils';
 import MenuElement from './menu-element';
 
+function iconByString(aValue) {
+    const img = document.createElement('img');
+    img.src = aValue;
+    return img;
+}
+
 class MenuItem extends MenuElement {
     constructor(text, image, onAction) {
         if (arguments.length < 2)
@@ -11,6 +17,7 @@ class MenuItem extends MenuElement {
 
         super();
         const self = this;
+        image = typeof image === 'string' ? iconByString(image) : image;
 
         const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
             if (self.enabled) {
@@ -54,12 +61,6 @@ class MenuItem extends MenuElement {
 
         applyPosition();
         applyText();
-
-        function iconByString(aValue) {
-            const img = document.createElement('img');
-            img.src = aValue;
-            return img;
-        }
 
         Object.defineProperty(this, 'icon', {
             get: function () {
