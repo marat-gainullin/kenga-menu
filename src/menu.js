@@ -19,7 +19,9 @@ class Menu extends Container {
                 `;
         this.element.appendChild(gapsStyle);
 
-        function showRelativeTo(anElement, horizontal = true) {
+        function showRelativeTo(anElement, horizontal = true, ltr = true, ttb = true) {
+            ltr = ltr || true
+            ttb = ttb || true
             if (!self.element.parentElement) {
                 const targetTop = Ui.absoluteTop(anElement);
                 const targetLeft = Ui.absoluteLeft(anElement);
@@ -31,10 +33,10 @@ class Menu extends Container {
                     self.element.style.top = `${top}px`;
                     self.element.style.left = `${left}px`;
                     document.body.appendChild(self.element);
-                    if (left + self.element.offsetWidth > window.innerWidth) {
+                    if (!ltr || left + self.element.offsetWidth > window.innerWidth) {
                         self.element.style.left = `${targetLeft - self.element.offsetWidth}px`;
                     }
-                    if (top + self.element.offsetHeight > window.innerHeight) {
+                    if (!ttb || top + self.element.offsetHeight > window.innerHeight) {
                         self.element.style.top = `${targetTop + anElement.offsetHeight - self.element.offsetHeight}px`;
                     }
                 } else {
@@ -45,10 +47,10 @@ class Menu extends Container {
                     self.element.style.top = `${top}px`;
                     self.element.style.left = `${left}px`;
                     document.body.appendChild(self.element);
-                    if (left + self.element.offsetWidth > window.innerWidth) {
+                    if (!ltr || left + self.element.offsetWidth > window.innerWidth) {
                         self.element.style.left = `${targetLeft + anElement.offsetWidth - self.element.offsetWidth}px`;
                     }
-                    if (top + self.element.offsetHeight > window.innerHeight) {
+                    if (!ttb || top + self.element.offsetHeight > window.innerHeight) {
                         self.element.style.top = `${targetTop - self.element.offsetHeight}px`;
                     }
                 }
@@ -60,9 +62,9 @@ class Menu extends Container {
             }
         });
 
-        function popupRelativeTo(anElement, horizontal = true) {
+        function popupRelativeTo(anElement, horizontal = true, ltr = true, ttb = true) {
             Ui.startMenuSession(self);
-            showRelativeTo(anElement, horizontal);
+            showRelativeTo(anElement, horizontal, ltr, ttb);
         }
         Object.defineProperty(this, 'popupRelativeTo', {
             get: function () {
