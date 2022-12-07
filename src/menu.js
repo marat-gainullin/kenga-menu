@@ -20,8 +20,6 @@ class Menu extends Container {
         this.element.appendChild(gapsStyle);
 
         function showRelativeTo(anElement, horizontal = true, ltr = true, ttb = true) {
-            ltr = ltr || true
-            ttb = ttb || true
             if (!self.element.parentElement) {
                 const targetTop = Ui.absoluteTop(anElement);
                 const targetLeft = Ui.absoluteLeft(anElement);
