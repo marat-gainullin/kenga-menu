@@ -5,5 +5,6 @@ export default class Menu extends Container {
   popupRelativeTo(anElement: HTMLElement, horizontal: boolean, leftToRight?: boolean, topToBottom?: boolean): void
   showAt(left: number, top: number): void
   popupAt(left: number, top: number): void
+  shown: boolean
   close(): void
 }

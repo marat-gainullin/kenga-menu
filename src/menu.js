@@ -131,6 +131,12 @@ class Menu extends Container {
             }
         });
 
+        Object.defineProperty(this, 'shown', {
+            get: function () {
+                return !!self.element.parentElement;
+            }
+        });
+
         function close() {
             if (self.element.parentElement) {
                 self.element.parentElement.removeChild(self.element);

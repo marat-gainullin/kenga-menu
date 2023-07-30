@@ -25,13 +25,19 @@ class MenuElement extends Widget {
             }
         });
         Ui.on(this.element, Ui.Events.MOUSEOVER, evt => {
-            if (Ui.isMenuSession()) {
-                self.parent.forEach(item => {
-                    if (item.subMenu)
-                        item.subMenu.close();
-                });
-                if (subMenu) {
-                    subMenu.showRelativeTo(self.element, !self.parent.element.className.includes('menu-bar'));
+            self.parent.forEach(item => {
+                if (item.subMenu)
+                    item.subMenu.close();
+            });
+            if (subMenu) {
+                subMenu.showRelativeTo(self.element, !self.parent.element.className.includes('menu-bar'));
+            }
+        });
+        Ui.on(this.element, Ui.Events.MOUSELEAVE, evt => {
+            if (self.subMenu) {
+                const subMenuRect = self.subMenu.element.getBoundingClientRect()
+                if (evt.clientX < subMenuRect.left || evt.clientX > subMenuRect.right || evt.clientY < subMenuRect.top || evt.clientY > subMenuRect.bottom) {
+                    self.subMenu.close();
                 }
             }
         });
