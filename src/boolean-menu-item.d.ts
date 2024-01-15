@@ -5,7 +5,7 @@ import ValueChangeEvent from 'kenga/events/value-change-event'
 import MenuElement from './menu-element'
 
 export default class BooleanMenuItem extends MenuElement {
-  constructor(radio: boolean, text: string, selected: boolean, onAction: (evt: ActionEvent) => void)
+  constructor(radio: HTMLInputElement, text?: string, selected?: boolean, onAction?: (evt: ActionEvent) => void)
 
   onAction: (evt: ActionEvent) => void
   selected: boolean
