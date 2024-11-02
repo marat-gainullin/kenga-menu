@@ -1,6 +1,6 @@
 {
   "name": "kenga-menu",
-  "version": "0.0.53",
+  "version": "0.0.54",
   "description": "Kenga menu bar and popup menu widgets.",
   "repository": "https://github.com/marat-gainullin/kenga-menu.git",
   "author": "marat-gainullin <mg@altsoft.biz>",
@@ -13,7 +13,7 @@
     "upload": "rimraf ./build && rollup -c rollup.lib.config.mjs && npm publish ./build/lib"
   },
   "dependencies": {
-    "kenga": "0.0.56"
+    "kenga": "0.0.57"
   },
   "devDependencies": {
     "@babel/runtime": "^7.15.3",
@@ -32,7 +32,7 @@
     "rollup-plugin-styles": "^3.14.1",
     "septima-model": "0.0.25",
     "shelljs": "^0.8.4",
-    "kenga-buttons": "^0.0.44",
-    "kenga-containers": "^0.0.62"
+    "kenga-buttons": "^0.0.45",
+    "kenga-containers": "^0.0.63"
   }
 }
