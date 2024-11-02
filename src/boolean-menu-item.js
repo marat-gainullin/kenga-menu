@@ -18,7 +18,7 @@ class BooleanMenuItem extends MenuElement {
         const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
             self.fireAction();
             self.selected = !self.selected;
-            // Ui.closeMenuSession();
+            // Ui.closePopupSession();
         });
 
         let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;

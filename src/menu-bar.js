@@ -24,7 +24,7 @@ class MenuBar extends Container {
         function startItem(target) {
             const item = findWidgetByElement(target);
             if (item && item.subMenu) {
-                Ui.startMenuSession(self);
+                Ui.startPopupSession(self);
                 item.subMenu.showRelativeTo(item.element, false);
             }
         }

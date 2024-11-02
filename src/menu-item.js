@@ -26,7 +26,7 @@ class MenuItem extends MenuElement {
         const clickReg = Ui.on(this.element, Ui.Events.CLICK, () => {
             if (self.enabled && !!!self.subMenu) {
                 self.fireAction();
-                Ui.closeMenuSession();
+                Ui.closePopupSession();
             }
         });
 

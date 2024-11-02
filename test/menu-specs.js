@@ -392,7 +392,7 @@ describe('Menu Api', () => {
                 Menu);
         button.dropDownMenu = menu;
         expect(button.dropDownMenu).toBe(menu);
-        menu.showRelativeTo(button, false);
+        menu.showRelativeTo(button.element, false);
         Invoke.later(() => {
             menu.close();
             done();
