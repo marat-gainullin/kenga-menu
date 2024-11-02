@@ -5,6 +5,7 @@ class Menu extends Container {
     constructor() {
         super();
 
+        const self = this
         this.element.classList.add('p-menu');
         const popup = new Popup(this.element)
 
@@ -52,6 +53,10 @@ class Menu extends Container {
 
         function close() {
             popup.close()
+            self.forEach(item => {
+                if (item.subMenu)
+                    item.subMenu.close();
+            });
         }
         Object.defineProperty(this, 'close', {
             get: function () {
