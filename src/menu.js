@@ -1,5 +1,6 @@
 import Container from 'kenga/container';
 import Popup from 'kenga/popup';
+import Ui from 'kenga/utils';
 
 class Menu extends Container {
     constructor() {
@@ -19,7 +20,8 @@ class Menu extends Container {
         });
 
         function popupRelativeTo(anElement, horizontal = true, leftToRight = true, topToBottom = true) {
-            popup.popupRelativeTo(anElement, horizontal, leftToRight, topToBottom)
+            Ui.startPopupSession(self)
+            popup.showRelativeTo(anElement, horizontal, leftToRight, topToBottom)
         }
         Object.defineProperty(this, 'popupRelativeTo', {
             get: function () {
@@ -37,7 +39,8 @@ class Menu extends Container {
         });
 
         function popupAt(left, top) {
-            popup.popupAt(left, top)
+            Ui.startPopupSession(self)
+            popup.showAt(left, top)
         }
         Object.defineProperty(this, 'popupAt', {
             get: function () {
