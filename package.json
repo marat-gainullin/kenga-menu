@@ -1,6 +1,6 @@
 {
   "name": "kenga-menu",
-  "version": "0.0.57",
+  "version": "0.0.58",
   "description": "Kenga menu bar and popup menu widgets.",
   "repository": "https://github.com/marat-gainullin/kenga-menu.git",
   "author": "marat-gainullin <mg@altsoft.biz>",
@@ -33,6 +33,6 @@
     "septima-model": "0.0.25",
     "shelljs": "^0.8.4",
     "kenga-buttons": "^0.0.47",
-    "kenga-containers": "^0.0.66"
+    "kenga-containers": "^0.0.68"
   }
 }
