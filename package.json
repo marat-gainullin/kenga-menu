@@ -1,6 +1,6 @@
 {
   "name": "kenga-menu",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "description": "Kenga menu bar and popup menu widgets.",
   "repository": "https://github.com/marat-gainullin/kenga-menu.git",
   "author": "marat-gainullin <mg@altsoft.biz>",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "kenga-buttons": "^0.0.48",
-    "kenga-containers": "^0.0.69",
+    "kenga-containers": "^0.0.70",
     "@babel/runtime": "^7.15.3",
     "@babel/core": "^7.15.0",
     "@babel/plugin-transform-runtime": "^7.15.0",
