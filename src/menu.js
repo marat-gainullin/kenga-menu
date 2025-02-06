@@ -10,6 +10,12 @@ class Menu extends Container {
         this.element.classList.add('p-menu');
         const popup = new Popup(this.element)
 
+        popup.addShowHandler(() => {
+            self.fireShown()
+        })
+        popup.addHideHandler(() => {
+            self.fireHidden()
+        })
         function showRelativeTo(anElement, horizontal = false, leftToRight = true, topToBottom = true) {
             popup.showRelativeTo(anElement, horizontal, leftToRight, topToBottom)
         }
